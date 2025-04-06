@@ -5,7 +5,7 @@
   vars:
     docker_image: "bodduashwini/finance"
     docker_tag: "${BUILD_NUMBER}" 
-    aws_region: "us-west-2"
+    aws_region: "us-east-1"
 
   tasks:
     - name: Stop and remove old container if exists
