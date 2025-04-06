@@ -1,0 +1,30 @@
+---
+- name: Deploy Docker Image
+  hosts: all
+  become: yes
+  vars:
+    docker_image: "bodduashwini/finance"
+    docker_tag: "${BUILD_NUMBER}" 
+    aws_region: "us-west-2"
+
+  tasks:
+    - name: Stop and remove old container if exists
+      docker_container:
+        name: bank-finance
+        state: absent
+        force_kill: yes
+
+    - name: Pull Docker Image
+      docker_image:
+        name: "{{ docker_image }}"
+        tag: "{{ docker_tag }}"
+        source: pull
+
+    - name: Run Docker Container
+      docker_container:
+        name: bank-finance
+        image: "{{ docker_image }}:{{ docker_tag }}"
+        state: started
+        ports:
+          - "80:8081"
+
