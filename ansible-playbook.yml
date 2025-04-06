@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars:
-    docker_image: "bodduashwini/finance"
+    docker_image: "shivanikanchukatla/finance"
     docker_tag: "${BUILD_NUMBER}" 
     aws_region: "us-east-1"
 
