@@ -1,2 +1,2 @@
 # bankapplication
-bank appliaction
+bank appliaction.
